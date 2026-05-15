@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Challenge Competition</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>Typing Challenge Competition</h1>
+      <p>3-minute English typing test for up to 30 students. See live ranking, WPM, and champion.</p>
+    </header>
+
+    <main>
+      <section class="panel" id="registration-panel">
+        <h2>1. Admin Controls</h2>
+        <div class="form-row admin-login-row">
+          <label for="admin-password">Admin</label>
+          <input id="admin-password" type="password" placeholder="Password" />
+          <button id="admin-login-button">Login</button>
+        </div>
+        <div id="admin-status" class="admin-status">Admin mode is off. Only admin can add or remove students.</div>
+
+        <div id="admin-controls" class="admin-controls hidden">
+          <div class="form-row">
+            <label for="participant-name">Student Name</label>
+            <input id="participant-name" type="text" placeholder="Enter student name" maxlength="40" />
+            <button id="add-participant">Add</button>
+          </div>
+          <div class="form-row small">
+            <select id="student-select-admin">
+              <option value="">-- Select existing student --</option>
+            </select>
+            <button id="remove-student">Remove</button>
+          </div>
+          <div class="form-row">
+            <button id="reset-all">Reset Competition</button>
+            <button id="share-link-button" class="secondary">Copy Participant Link</button>
+          </div>
+          <div id="paragraph-admin" class="form-row admin-paragraph">
+            <label for="new-paragraph">New Paragraph</label>
+            <textarea id="new-paragraph" rows="4" placeholder="Write a paragraph for participants"></textarea>
+          </div>
+          <div class="form-row">
+            <button id="add-paragraph" class="secondary">Add Paragraph</button>
+            <div class="paragraph-count">Total paragraphs: <span id="paragraph-count">15</span></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <select id="student-select-public">
+            <option value="">-- Select your name --</option>
+          </select>
+          <button id="start-test" class="primary">Start 3-Minute Test</button>
+        </div>
+      </section>
+
+      <section class="panel" id="test-panel">
+        <h2>2. Test Area</h2>
+        <div id="prompt-area" class="prompt-box" tabindex="0" aria-label="Typing prompt area"></div>
+        <div class="timer-row">
+          <div><strong>Time left:</strong> <span id="timer">03:00</span></div>
+          <div><strong>Text set:</strong> <span id="paragraph-number">0</span></div>
+        </div>
+        <div class="form-row">
+          <button id="finish-test" class="secondary" disabled>Finish Test Early</button>
+          <button id="clear-input">Clear Text</button>
+        </div>
+      </section>
+
+      <section class="panel" id="results-panel">
+        <h2>3. Result Summary</h2>
+        <div class="result-grid">
+          <div><strong>Name:</strong> <span id="result-name">-</span></div>
+          <div><strong>Words typed:</strong> <span id="result-words">-</span></div>
+          <div><strong>WPM:</strong> <span id="result-wpm">-</span></div>
+          <div><strong>Accuracy:</strong> <span id="result-accuracy">-</span></div>
+          <div><strong>Total chars:</strong> <span id="result-chars">-</span></div>
+          <div><strong>Correct chars:</strong> <span id="result-correct">-</span></div>
+        </div>
+        <div class="form-row">
+          <button id="next-participant" class="primary hidden">Next Participant</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="scoreboard-panel">
+        <h2>4. Live Scoreboard</h2>
+        <div class="board-info">
+          <div><strong>Champion:</strong> <span id="champion-name">-</span></div>
+          <div><strong>Top WPM:</strong> <span id="champion-wpm">-</span></div>
+        </div>
+        <table id="scoreboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>WPM</th>
+              <th>Accuracy</th>
+              <th>Paragraph</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
