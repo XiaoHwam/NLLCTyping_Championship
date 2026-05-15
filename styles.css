@@ -1,0 +1,306 @@
+:root {
+  --bg: #111314;
+  --panel: #1d2226;
+  --border: #33393f;
+  --primary: #4a90ff;
+  --primary-strong: #6fa9ff;
+  --text: #edf2f7;
+  --muted: #9aa3b1;
+  --success: #4cd964;
+  --error: #ff5d5d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  background: #292d31;
+  color: var(--text);
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 2.5vw, 3rem);
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.panel {
+  background: #292d31;
+  border: 1px solid #44494d;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+#registration-panel,
+#test-panel,
+#results-panel,
+#scoreboard-panel {
+  grid-column: 1 / -1;
+}
+
+.app-shell {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.form-row.small {
+  align-items: center;
+}
+
+label {
+  min-width: 120px;
+  align-self: center;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #4a4f55;
+  padding: 14px 16px;
+  background: #2c3135;
+  color: var(--text);
+}
+
+textarea {
+  min-height: 200px;
+  resize: vertical;
+  margin-top: 14px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  background: #2c3135;
+  color: var(--text);
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.primary {
+  background: var(--primary);
+  color: #0f172a;
+}
+
+.secondary {
+  background: #22314b;
+  color: var(--text);
+}
+
+.prompt-box {
+  min-height: 10rem;
+  max-height: 10rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  background: #292d31;
+  line-height: 1.4;
+  margin-bottom: 18px;
+  white-space: pre-wrap;
+  cursor: text;
+  outline: none;
+  font-size: 2rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.prompt-box::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.prompt-box {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.prompt-char {
+  display: inline-block;
+  white-space: pre;
+}
+
+.prompt-char:not(.correct):not(.incorrect) {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.prompt-char.hidden {
+  display: none;
+}
+
+.prompt-char.correct {
+  color: #ffffff;
+}
+
+.prompt-char.incorrect {
+  color: #ff6b76;
+}
+
+.prompt-char.cursor {
+  border-left: 2px solid var(--primary);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { border-color: transparent; }
+}
+
+.timer-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.board-info {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+#scoreboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#scoreboard-table th,
+#scoreboard-table td {
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  text-align: left;
+}
+
+#scoreboard-table th {
+  background: #21272c;
+  color: var(--text);
+}
+
+#scoreboard-table td {
+  color: var(--text);
+}
+
+#scoreboard-table tbody tr:nth-child(1) {
+  background: rgba(74, 144, 255, 0.12);
+}
+
+.admin-controls.hidden {
+  display: none;
+}
+
+.admin-login-row {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.admin-login-row label {
+  margin-right: 8px;
+  min-width: auto;
+  width: auto;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.admin-login-row input {
+  max-width: 220px;
+}
+
+.admin-login-row button {
+  width: auto;
+  padding: 10px 16px;
+}
+
+.admin-status {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.admin-paragraph textarea {
+  min-height: 100px;
+}
+
+.paragraph-count {
+  align-self: center;
+  color: var(--muted);
+}
+
+.admin-paragraph textarea {
+  min-height: 100px;
+}
+
+.paragraph-count {
+  align-self: center;
+  color: var(--muted);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
